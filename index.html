@@ -3,53 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zwe Min Htet Portfolio</title>
+  <meta name="description" content="Portfolio of Zwe Min Htet, AL & Flutter developer">
+  <title>Zwe Min Htet | Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 <body>
-  <header>
-    <h1>Zwe Min Htet</h1>
-    <p>AL Developer | Flutter Developer | QA Enthusiast</p>
-    <nav>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <h1>Hello, I'm Zwe Min Htet</h1>
+    <p class="typing"></p>
+    <a href="#projects" class="btn">View My Work</a>
   </header>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>AL Language / Business Central</li>
-      <li>Flutter / Dart</li>
-      <li>Git / GitHub</li>
-      <li>SQL / Database</li>
-    </ul>
-  </section>
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="fade-in">
+      <h2>About Me</h2>
+      <p>
+        IT professional with a B.C.Sc. degree and nearly five years in ERP, POS, and HR systems. 
+        I focus on business application development, analyzing processes, and implementing 
+        solutions that improve efficiency and support growth. Passionate about collaborating 
+        with teams to deliver practical software that drives measurable business impact.
+      </p>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>To-Do App</h3>
-      <p>A simple task manager made in Flutter.</p>
-      <a href="https://github.com/yourusername/todo-app" target="_blank">GitHub</a>
-    </div>
-    <div class="project">
-      <h3>Sales Management System</h3>
-      <p>Business Central AL project for managing orders.</p>
-      <a href="https://github.com/yourusername/sales-management" target="_blank">GitHub</a>
-    </div>
-  </section>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="fade-in">
+      <h2>Experience</h2>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: your-email@example.com</p>
-    <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-  </section>
+      <div class="experience-cards">
+        <div class="experience-card">
+          <h3>Development Consultant</h3>
+          <span>2025 - Present</span>
+          <p>
+            Responsible for system monitoring, troubleshooting,
+            supporting business applications, and improving operational workflows.
+          </p>
+        </div>
 
+        <div class="experience-card">
+          <h3>Software Service Technician</h3>
+          <span>2020 - 2025</span>
+          <p>
+            Provided technical support, system installation,
+            customer troubleshooting, and issue resolution.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="fade-in">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div>AL Language</div>
+        <div>Business Central</div>
+        <div>Flutter</div>
+        <div>Dart</div>
+        <div>Git & GitHub</div>
+        <div>SQL</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="fade-in">
+      <h2>Projects</h2>
+
+      <div class="project-card">
+        <h3>Sales Management System</h3>
+        <p>Business Central AL project for managing sales orders and reports.</p>
+        <a href="#">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Flutter To-Do App</h3>
+        <p>A simple and clean task management app built with Flutter.</p>
+        <a href="#">View Project</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Zwe Min Htet</p>
+    <p>© 2026 Zwe Min Htet | Portfolio</p>
   </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Scroll to top on page load & typing effect
+    const text = "AL Developer | Flutter Developer | QA Background";
+    let index = 0;
+    const typingElement = document.querySelector(".typing");
+
+    function typeEffect() {
+      if (index < text.length) {
+        typingElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50);
+      }
+    }
+
+    window.onload = () => {
+      window.scrollTo(0, 0); // Ensure page starts at top
+      typeEffect();
+    };
+
+    // Fade-in scroll effect
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 </body>
 </html>
